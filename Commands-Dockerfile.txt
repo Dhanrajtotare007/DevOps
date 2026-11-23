@@ -1,0 +1,38 @@
+Creat instance
+
+sudo -i
+
+sudo apt get-update
+
+#install docker
+sudo apt install docker.io -y
+
+#create a working dir
+
+mkdir -p ~/Dhanraj/app 
+
+#Creat a docker file 
+
+vi Dockerfile 
+
+FROM ubuntu 24.04
+
+LABEL maintainer = "dhanraj@gmail.com"
+LABEL ENV = "Staging"
+LABEL APP = "nginx" 
+
+RUN apt-get update && \
+    apt-get install -y nginx:stable && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists
+
+EXPOSE 80
+
+CMD ["nginx","-g", "daemon off";]
+
+insert - copy paste above - :wq
+
+docker build -t  dhanrajimage:v1 .
+docker run -d -p 8080:80 dhanrajimage:v1
+
+
