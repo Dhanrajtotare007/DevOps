@@ -1,0 +1,44 @@
+
+
+ FROM ubuntu 
+ MAINTAINER dhanrajtotare009@gmail.com
+ RUN apt-get update
+ RUN apt-get install nginx -y
+ CMD ["echo","Image created"]
+
+ #go to the home
+
+ sudo -i 
+ sudo apt-get update
+
+ apt install docker.io -y 
+
+
+ #create Docker file now
+
+ vi Dockerfile
+
+ #paste above dockerfile commands to it save and exit :wq
+
+ #now build docker image
+ docker build -t dhanrajimage .
+
+ # -t for tag
+ # dhanrajimage is tagname
+ # .  is for what ever Dockerfile is present at this location read it and build image , this is basically a context which is very imp 
+ #which helps docker to copy files from the location , like whereare the spices placed in the kitchen take it and make a curry .
+
+
+ # now how to push it to the docker hub or registry
+ # this will make the image ready to push to a particular docker hub accout by usernam 
+ docker tag imageid  dockerhubid/imagename:tag
+ docker tag 117268fdcf69 dhanraj009/dharajimage:latest
+
+ docker login 
+
+ #you will get a link to log in to docker with a one time code otc log in to the docker and check image , also pull command will be generated 
+ #for the image
+
+ #finally dockeer push
+ docker push dhanraj009/dharajimage:latest 
+ # your image will be pushed to docker hub , you can check it by loging in to the docker 

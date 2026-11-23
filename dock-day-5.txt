@@ -1,0 +1,60 @@
+
+pre rq - vertualization should be enabled, cpu should be available more than 50%, ram should be more that 8gb
+Docker desktop should be installed to use Docker gordan AI
+
+Install docker desktop for windows 4.99 version 
+enable or check tick install or download wsl 
+install and open docker d and 
+check if docker is running and up in your local 
+run - docker ps 
+you will see contener index
+run - docker images 
+you will see images available on local 
+this is proof that docker is up and running on local.
+
+now go to docker d ui you can log in using your docker hub credentials, 
+also in the docker we have capabilities to run the kubernetes clusters as well.
+ click on gordon you will see diffn UI options - explore it
+ on you shell or cmd type docker ai 
+ and gordons cli will be open 
+ give prompt to creat a containirize application , creat a dockfile for a application , build image, creat container, run container, on port local host 9090
+ and verify.
+ it will do and you can verify it on published port.
+ 
+ task creat a any app using docker gordon and read logs learn reading logs , it will help you in troubleshooting.
+ 
+ # how to enable kebernetes in docker desktop
+ go to setting 
+ search kubernetes - enable it
+ verify it by pshell command - kubectl get nodes
+ 
+ ### kubernetes cluster can be created of 5 types
+ 
+ kind(Kubernetes inside Docker) :- 
+ k3s (Lightweight Kubernetes):-  not loaded with full features, lightweight.
+ minikube (Local Kubernetes):- was used to learn 
+ 
+ kubeadm (Cluster initialization):- in bare metal approch it is used ,when we set up  on premises kubernets. set up is done by fully manual.  
+ 
+ k8s (Kubernetes platform):- it will be under cloud , not your local, say GKE of GCP ,
+ can be called EKS , AKS but GKE should be preffered.
+ 
+ IQ. which kubernetes cluster you are using in your company?
+ ans- k8s , versin 1.36 is used widly in companies, but 1.37 is also released.
+ 
+## Docker terms in kubernetes
+
+Container - A lightweight and portable executeable image that contains software, os and all its dependencies (bin/lib).
+
+#nodes(vm+soft or app):-a set of machines/instance, where required tools installed called nodes, in vm we will install any application like docker,nginx 
+that we will call as node, if vm is down that is infra problem , if node is down that is application problem,   
+Containerized nodes applications managed by kubernetes 
+cluster has atleast one worker node and one master node (on real time its minmum 3) , node is 1 or 2 vms and cluster means collections of nodes.
+
+minikube:- a tool for running kubernetes locally.
+
+kubectl :- a command line tool to communicate with kubernetes
+kubelet :- an angent that runs on each node in the cluster.
+
+
+

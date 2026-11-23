@@ -1,0 +1,22 @@
+// Linux-Commands
+
+cat - cat prints the complete file content directly to the terminal without pausing for you to scroll.
+best for small files, quick checking config or text files.
+
+more - read the file page by page, displays content one screen at a time, allowing you to read large files without flooding the terminal.
+best for large files.
+
+head - to read top 10 lines from files i.e. head -10 filename
+
+tail - to read bottom lines from file i.e. tail -10 filename
+
+vi - open file in editor
+
+mkdir - create folder 
+
+cp - copy file from one file to another i.e. cp file1 file2
+
+mv - move and rename file i.e. mv file1 file2 
+
+
+
