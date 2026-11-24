@@ -1,0 +1,81 @@
+
+
+##day one of kubernetes
+diagram at 14 min
+
+#Nodes :- nodes in the kubernetes are main worker machines, they are also knows as minions,
+it could run on a physical machine or vm, nodes provides all the neccessary service to pods.
+nodes in the kubernetes system is managed by the master.
+
+
+## What is kubernetes?
+kubernetes is an open source container orchestraction system for automating computer application 
+deployment, scalling, and management,It provides features like self-healing, rolling updates, service discovery, 
+and automatic scaling. It follows a master-worker architecture, consisting of a Control Plane and Worker Nodes,
+it was originally disigned by google and is now maintained by the cloud 
+native computing foundation(CNCF).written in golang mostly , initial release 7 june 2014.
+
+many cloud service offer a kubernetes based platform or infrastructure as a service(paas or iaas)
+on which kubernetes can be deployed as a platform-providing service.many vendors also provides
+there own branded kubernetes distributions.
+i.e. 
+AWS - Amazon EKS - Managed Elastic kubernetes service EKS
+AZURE - Azure Microsoft Service - (AKS)I Microsoft 	AZURE 
+GCP  -- GKE Google kubernetes Engine
+
+### kubernetes components
+kubernetes cluster is primarily made up of following components
+
+A) Master
+- kube api server
+- Control Plane (kube-scheduler+kuber-controller-manager+Cloud-controller Manager)
+- ETCD
+B) Node:
+- Kubelet
+- kube-proxy 
+  Container runtime
+  
+C) Addons:
+- DNS
+- WEBUI
+- Container resource monitoring
+- cluster level logging
+
+* Node are always created in odd numbers
+why? ---> Odd numbers give you better failure tolerance for the same or lower infrastructure cost.  
+Quorum = (N/2)+ 1
+
+IQ. if you want to restart a node how can you restart it..?
+--> first we have to release workload, we can restart the pods through master.
+
+IQ. whenever you want to talk with the kubenetes cluster , there is one utility calle kubectl.
+    you will talk with the Kubernetes Control Plane (formarly master node), 
+	important distinction: kubectl communicates with the Kubernetes API Server, which runs on the control plane.
+	Your terminal - kubectl - API Server - Control Plane components.
+	
+	## IQ :- which os is recommended inside a kubernetes node.
+	--> COS - Container Optimized OS with Containerd
+	
+	## IQ. CAN we connect to the nodes directly?
+	ans - No.we can connect with the individual machine but not supposed to be , because we should always connect through cluster.
+	
+	Q. What are the major features of Kubernetes?
+	"Kubernetes provides automated deployment, auto-scaling, self-healing, load balancing, rolling updates, rollbacks,
+	service discovery, storage orchestration, configuration management, 
+	resource management and high availability. These features help organizations manage containerized
+	applications efficiently across multiple nodes."
+	
+	
+	Q. why kubernetes is an orchetration tool?
+	Kubernetes is called a container orchestration tool because it automates the deployment, scheduling, scaling, networking, 
+	load balancing, monitoring, and management 
+	of containerized applications across a cluster of machines. 
+	It also provides self-healing capabilities to maintain the desired state of applications.
+	note:- Kubernetes does not provide a complete built-in monitoring solution by itself. 
+	Tools such as Prometheus and Grafana are commonly used with Kubernetes.
+	
+
+
+
+
+
