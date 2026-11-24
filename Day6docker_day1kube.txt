@@ -74,6 +74,61 @@ IQ. whenever you want to talk with the kubenetes cluster , there is one utility 
 	note:- Kubernetes does not provide a complete built-in monitoring solution by itself. 
 	Tools such as Prometheus and Grafana are commonly used with Kubernetes.
 	
+	Q what is namespaces ?
+	A Namespace is a logical partition within a Kubernetes cluster
+	used to organize and isolate resources such as Pods, Deployments, and Services.
+	
+	
+	## kube practicals
+	create a cluster
+	
+	connect
+	
+	kubectl get ns :- list availabel namespaces 
+	kubectl delete ns <namespace_name> :- it will delete namespaces
+	kubectl create ns dev :- it will create namespace with name dev.
+	
+	# qans.yaml
+	
+	---
+	apiVersion:v1
+	kind:Namespace
+	metadata:
+	name:qa
+	
+	vi qans.yaml - insert - paste above code- :wq
+	
+	kubectl apply -f qans.yaml
+	
+	## yaml file always starts with ---
+	## yaml file written in  key:value(Q:ans) pair
+    ## version v1 is of kubernetes
+	## whatare the componentst in kubernetes we called it as kind (type) here kind is Namespace.
+	## metadate :- info about the kind.
+	## kubernetes Template is a plugin we use to write .yaml files template. (extention - search- install-kube.deployment)
+	
+	apiVersion: apps/v1  :- kubernetes or api version 1
+kind: Deployment         :- component name or name of the application
+metadata:                :- info about the kind 
+  name:  netflix         :-  app name 
+  namespace: dev         :- name of the namespace you want to add
+  labels:                :- 
+    app:  frontend       :- tagging , it helps to find another pods 
+spec:
+  selector:
+    matchLabels:
+      app: frontend      :-tagging , it helps to find another pods
+	  
+	  
+ ## Q: What are Labels and Selectors in Kubernetes?
+
+Labels are key-value pairs attached to Kubernetes objects to categorize and identify them. Selectors are used to identify
+and group resources based on their labels. They help Kubernetes components, such as Services and Deployments, 
+find and manage the correct Pods.
+#trick for push
+	
+
+	
 
 
 
