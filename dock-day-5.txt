@@ -1,5 +1,5 @@
 
-pre rq - vertualization should be enabled, cpu should be available more than 50%, ram should be more that 8gb
+## pre rq  for docker desktop - vertualization should be enabled, cpu should be available more than 50%, ram should be more that 8gb
 Docker desktop should be installed to use Docker gordan AI
 
 Install docker desktop for windows 4.99 version 
@@ -55,6 +55,31 @@ minikube:- a tool for running kubernetes locally.
 
 kubectl :- a command line tool to communicate with kubernetes
 kubelet :- an angent that runs on each node in the cluster.
+Kubelet is an agent that runs on every Kubernetes node. It communicates with the Kubernetes API Server and ensures that the containers inside the Pods assigned to that node are running as expected. 
+It interacts with the container runtime to start, stop, and monitor containers, and reports node and Pod status back to the API Server.
+
+## some terminologies to remember forever 
+Terminology	Interview-ready definition
+Control Plane:-	The brain of Kubernetes. It manages and controls the overall cluster.
+Kubernetes API / Desired State:-	The API Server is the entry point for communicating with Kubernetes. Desired State defines how we want the cluster to look and behave.
+Pod:-	The smallest deployable unit in Kubernetes. It contains one or more containers.
+ReplicaSet:-	Ensures that the specified number of identical Pod replicas are running.
+Deployment:-	Manages ReplicaSets and provides declarative updates, scaling and rollbacks for applications.
+Service:-	Exposes a group of Pods through a stable network endpoint and uses label selectors to identify them.
+Namespace:-	Divides a Kubernetes cluster into logically isolated environments, such as dev, testing and monitoring.
+Volume:-	Provides storage that can be accessed by containers inside a Pod.
+Job:-	Creates one or more Pods and ensures that a specified number of them successfully complete a task.
+DaemonSet:-	Ensures that a copy of a Pod runs on all or selected nodes in the cluster.
+StatefulSet:-	Manages stateful applications that require stable identities, persistent storage and ordered deployment or scaling.
+
+
+###########
+## How to create KUBERNETES Cluster(GKC) on GCP
+VM instance - search kubernetes engine - clusters - (for the firsttime it will ask you to enable api wait and refresh page) -
+- click on create - two modes will be there standard , autopilot choose standard - name - default pool - 
+- nodes - number of nodes per zone change to 1 - Boot disk size change to 30 GB (for free tier accout)  - create.
+
+
 
 
 
