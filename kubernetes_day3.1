@@ -66,11 +66,21 @@ kubectl edit deploy <deployment name>
 -- vi editor will open - insert mode- change replica numbers - :wq
 now verify 
 kubectl get po - you will see changed pods number
+we can do thid through ui as well go to workload  - yaml and change replicas.
 
 ## Q: What does replicas: 3 mean in Kubernetes?
 
 Answer: It means the Deployment controller ensures that three instances of the application (Pods) are running. 
 If one Pod fails, Kubernetes creates another Pod to maintain the desired state of three replicas.
+
+### what is staefulSet..?
+ans :- A StatefulSet is a Kubernetes workload controller used to manage stateful 
+applications that require stable network identities, persistent storage, and ordered deployment and scaling.
+Unlike Deployments, StatefulSets assign predictable and unique identities to Pods, such as mysql-0, mysql-1, and mysql-2.
+Each Pod can have its own PersistentVolumeClaim (PVC), allowing its data to persist even if the Pod is deleted and recreated.
+StatefulSets are commonly used for stateful applications such as MySQL, MongoDB, and Cassandra.
+
+
 
 
 
