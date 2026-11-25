@@ -1,0 +1,23 @@
+
+
+dig
+
+4 services of kubernetes 
+##single stage and multi stage dockerfiles.
+## real time problem faced in your company and how did you solve it 
+## (Error: ImagePullBackOff) - private repo, authentication authorization, not allowed to pull image through companys private ip
+   employee left company who used to pull the image, service accout..?, password issue?.
+   
+   2. Git project , profile and add it to the linkdln.
+   3. gitlab
+   4. linux troubleshooting v
+   5. aws 
+   ## homework, download gcloud sdk and run cluster command 
+   ## try creating multi vm using hypervisor, using orakal vertual box.
+   
+   
+   # how to create a deployment 
+   
+   in cluster 
+   run 
+   

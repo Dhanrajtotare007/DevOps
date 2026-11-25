@@ -1,0 +1,114 @@
+
+# Q.what are the number of nodes and what is the size of nodes in kubernetes in your company?
+ans:- 11 nodes , 300 pods , size of the nodes are cpu - 8 core, ram - 16gb, disk size - 512gb (per machine , and all nodes will be of same size)
+
+# architecture of kubernetes 
+diagram at 5:29 
+A)control plane ( formarly Master node)
+1)API SERVER :- handles all request
+2)ETCD :- MOMORY OF KUBERNETES - IT MENTAIN THE STATE in key;value pair (basically its store kubernetes data)
+3) Scheduler :-  scheuler will scheduled and rember task ,
+4) Controll Manager:- it will perform task. 
+
+2nd diagram 9:47
+
+B) worker node
+1) kubelet :- a agent which provides all the info about worker to the api server, 
+   communicates with api server and manage containers.
+2) worker node 
+  i) kubelet
+  ii)kubeproxy
+3)Docker container runtime
+  i) pods
+  ii) container
+  iii)services
+  iv) deployment
+  
+  applications will be running as pods in kubernetes , inside the pods there will be containers 1 or more, volumns 1 or more,
+  running application in kubernetes is called as pod.
+  
+  ## inshort 
+  1) kubectl :- let you talk to the kubernetes api server
+  2) API server :- it handles all the requests
+  3) Controller Manager :- adjust cluster resources as needed.
+  4) Scheduler:- find the best spot for workload.
+  5) kubelet :- runs workload on each machine.
+  6) ETCD :-   Remebers everything about cluster.
+  7) Kube Proxy:- Directs tracffice to the right workloads.(Expose)
+  8) POD :-  Where workloads actually runs.
+  9) Container runtime:- Runs the app inside the workload.
+  
+   # creating cluster advance setting 
+  
+  Q. in one node how many pods can be created?
+  and :- recommended max 110 per pod (default shows 110) 
+  
+  backup plan
+  details
+  targe RPO (Recovery point object) - 1day :- mean daily backup
+  delete backup after - 7 days
+  Edit backup details.
+  
+  # if we enable cluster autoscale , what will autoscale , pods, nods or containers?
+  ans :- nodes
+  
+  default pool - node pool upgrade strategy - surge upgrade - min - max(to set limit to increase pods.)
+  
+  #Q. what is blue-green in kubernetes..?
+  Blue-Green Deployment in Kubernetes is a deployment strategy where we maintain two identical environments 
+  (Blue and Green) and switch user traffic from the old version to the new version after confirming that the new version is working correctly.
+The main purpose is to achieve zero or minimal downtime and easy rollback during application updates.
+  Blue-Green = Deploy separately, test separately, switch traffic, and roll back easily.
+  
+  # what is canary deployment?
+  Canary Deployment in Kubernetes is a deployment strategy in which we release 
+  a new application version to a small percentage of users first, monitor its performance, 
+  and gradually increase traffic if everything works correctly.
+  
+  # in kubernetes master does't shows up , we only see worker node (need to dig and verify)
+  
+  Q. explain kubernetes architecture....? most asked question.
+  
+  kubectl cluster-info  :- show cluster info
+  kubectl run nginx --image=nginx:1.16 :- it will create a nginx pod , unlike docker we have to specify image version explicitly.
+  kubectl get pod :- see running pods in kubectl.
+  # after running the pod you can expose it through UI 
+  go to the cluster - workload - click on running app - click on expose - select service type load balancer - a service will be created
+  - it will take 30sec - you can check ext ip by running command 
+  kubectl get svc  :- shows running services 
+  kubectl get svc -w :- continuosely monitor the service live.
+  copy the ext ip and run in browser.
+  
+  kubectl logs nginx :- shows logs of app
+  
+  kubectl describe po nginx :- shows detail info about the pod. it helps troubleshooting when pods fail running. (Error: ImagePullBackOff)
+  
+  ## 
+  
+  
+  
+  ##Q. what are kuernetes 4 services
+  "Kubernetes provides four Service types: ClusterIP, NodePort, LoadBalancer and ExternalName. 
+  These services provide different ways to expose applications and enable communication inside or outside the Kubernetes cluster.
+  kube-proxy implements Service networking for the first three in typical kube-proxy-based clusters, while ExternalName works through DNS.
+  
+  Service type	Explanation	Example
+1. ClusterIP	Exposes an application internally within the cluster.	Backend communication
+2. NodePort	Exposes an application through a port on every node's IP address.	Access application using NodeIP:Port
+3. LoadBalancer	Exposes an application externally using a cloud provider's load balancer.	Public application access
+4. ExternalName	Maps a Kubernetes Service to an external DNS name.	Access an external database using a Kubernetes service name
+
+
+  
+  
+  
+
+  
+ 
+  
+ 
+  
+   
+  
+
+

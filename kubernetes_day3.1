@@ -1,0 +1,29 @@
+
+## Pods
+pods are sigle instaces of a running process in a cluster.
+Pods contain atleast one container.
+they usually run as single container but can run multple containers
+Multiple containers are used when two or more containers must share resources
+
+if the pod is unhealthy - for example, if it is stuck in waiting mode or crashing 
+repeatedly it is terminated. the mechanism that manages scalling and health monitoring
+is known as controller.
+
+# services
+if we will use any pod for any work (application) or to
+keep it on frontend that type of operation is called service in kubernetes.
+
+## in kubernetes terminology 
+pod is an object that provids API endpoints with a stable IP address that 
+allow applications to discover pods running a particular application 
+kubernetes provides a level of indirection between application 
+runnin in pods, And other applications that call them: it is called a 
+servcice.
+
+## can we run the connect command of a cluster on local machin?
+ans - yes we can, but we have to download gcloud sdk and configure , 
+
+
+
+
+
