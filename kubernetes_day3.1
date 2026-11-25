@@ -20,8 +20,67 @@ kubernetes provides a level of indirection between application
 runnin in pods, And other applications that call them: it is called a 
 servcice.
 
+
+
+ # ip to ip communications does not happen , servicename to servicename does.
+ 
+ # gcloud container clusters get-credentials project01 --region us-east4 --project dhanrajproject-512517
+ 
+Component	Explanation
+gcloud:-	Google Cloud CLI. Used to interact with Google Cloud services.
+container:-	Specifies that you want to work with Google Cloud's container service (GKE).
+clusters:-	Specifies that you want to manage Kubernetes clusters.
+get-credentials:-	Retrieves cluster connection information and configures your kubectl access.this will generate kube.config file (interview q)
+project01:-	Name of your Kubernetes cluster.
+--region us-east4:-	Specifies the region where your cluster is located.
+--project dhanrajproject-512517:- 	Specifies the Google Cloud project that owns the cluster.
+
 ## can we run the connect command of a cluster on local machin?
-ans - yes we can, but we have to download gcloud sdk and configure , 
+ans - yes we can, but we have to download gcloud sdk and configure, do this homework.
+
+## what is replica set
+a replica set is a controller used by deployement that ensures the correct number of identical pods are running.
+for example if a pod is determined to be unhealthy , a controller will terminate that pod. the replicaSet will 
+detect that not unough pods for that application or worklods are running and will create another pods,
+replica sets are also used to update and delete pods.
+
+## What is a Deployment in Kubernetes..?
+A Deployment is a Kubernetes resource that manages ReplicaSets and provides declarative updates for applications.
+It ensures that the desired number of application Pods are running and provides features such as rolling updates, rollbacks and scaling.
+Whenever we update the application configuration, such as changing the container image version, 
+the Deployment creates a new ReplicaSet and gradually replaces the old Pods with new Pods without 
+requiring us to manually delete and recreate them.
+(vikas)additionally :- we can say deployments are sets of identical pods. the member of the set 
+may change as some pods are terminated and others are started, but they are all running the same application.
+the pods are running same application because they are created using the same pod template.
+
+kubectl create deployment nginxdeploy  --image=nginx :- create deployment and pod as well.
+kubectl get po :- get pod status.
+kubectl delete po <podName> : delete pod
+## deployment auto create new pod if a existing pod is deleted.
+
+## how to increse number of pod in deployment?
+kubectl get po 
+kubectl get deploy
+kubectl edit deploy <deployment name>
+-- vi editor will open - insert mode- change replica numbers - :wq
+now verify 
+kubectl get po - you will see changed pods number
+
+## Q: What does replicas: 3 mean in Kubernetes?
+
+Answer: It means the Deployment controller ensures that three instances of the application (Pods) are running. 
+If one Pod fails, Kubernetes creates another Pod to maintain the desired state of three replicas.
+
+
+
+ 
+
+
+
+ 
+ 
+   
 
 
 
