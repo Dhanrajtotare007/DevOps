@@ -80,6 +80,44 @@ Unlike Deployments, StatefulSets assign predictable and unique identities to Pod
 Each Pod can have its own PersistentVolumeClaim (PVC), allowing its data to persist even if the Pod is deleted and recreated.
 StatefulSets are commonly used for stateful applications such as MySQL, MongoDB, and Cassandra.
 
+## persistent volume vs persistent volume claim
+
+persistent volume(pv):- its a piece of network storage that has been provisioned by 
+the administrotor. its a resource in the cluster wich is independent of any 
+individual pod that uses the PV.
+
+persistent volum claim(pvc):- the storage requested by kubernetes for its pods 
+is known as pvc. the user does not need to know the underlying provisioning.
+the claim must be created in the same namespace where the pod is created.
+
+## job 
+job is an abstraction about a workload. jobs create pods and run them until the 
+application complete a workload.
+job specifications are specified in a configuration file and 
+include specifications about the container to use and what command 
+to run. 
+
+## secrete 
+A secrete is an object , where we can store sensetive info like
+username and passwordsAPI tokens and certificates. 
+in the secrete files, values are base64 encoded.
+to use secrete, we need to refere to the secret in our pod.
+or we can put it inside a volume and mount that to the container.
+Secretes are not encrypted by default, for encryption we need to 
+create an EncryptionConfig.
+
+
+## configmap
+A configmap binds configuration files,
+command-line, arguments, environment variables and 
+other configuration artifacts to your pods.
+configmap allow you to separate your configuration.
+from pods and components, which helps keep the workload 
+portable, make there configuration easier to chang and 
+manage. configmaps are useful for storing and sharing 
+non-sensitive, unencrypted configuration information. 
+
+
 
 
 

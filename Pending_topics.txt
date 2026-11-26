@@ -16,8 +16,5 @@ dig
    ## try creating multi vm using hypervisor, using orakal vertual box.
    
    
-   # how to create a deployment 
-   
-   in cluster 
-   run 
+  ### pv, pvc and mount.
    

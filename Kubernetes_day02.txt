@@ -99,6 +99,11 @@ The main purpose is to achieve zero or minimal downtime and easy rollback during
 4. ExternalName	Maps a Kubernetes Service to an external DNS name.	Access an external database using a Kubernetes service name
 
 
+
+
+
+
+
   
   
   
