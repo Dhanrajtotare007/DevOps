@@ -63,5 +63,21 @@ kubectl create is an imperative command used to create Kubernetes resources. If 
 kubectl apply is a declarative command used to create or update Kubernetes resources based on configuration files. 
 It compares the desired configuration with the existing resource and applies the necessary changes.
 
+## .yaml file alwayes starts with ---
+
+## how to deploy a project on kubernets
+
+steps 
+1. creat a cluster
+2. create a folder using mkdir foldername
+3. verify folder created - ls
+4. go inside the folder - cd folder name 
+5. clone git repo of googlecloude demo micro service - git clone https://github.com/GoogleCloudPlatform/microservices-demo/tree/main
+6. go to the relese folder because thats where thekubernetes-manifests.yaml file is placed. using cd 
+7. create deployment - kubectl apply -f kubernetes-manifests.yaml
+8. containers will be created, services will be created and your all service applications will be deployed.
+9. verify by commands - kubectl get po %% kubectl get deploy && kubectl get svc
+10. copy the external ip of frontend and run it in your browser  
+
 
  
