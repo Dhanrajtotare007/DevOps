@@ -28,4 +28,40 @@ affect the other.
 5.Since services are not isolated, individual resource allocation not possible.
 6. application scalling is challenging as well as wastfull.
 7. Development tools get overburdened as the process needs to start from the scratch.
+
+
+Software architectural patterns
+1. software architecture is the backbone of building scalable and 
+efficient applications. this diagram beutifully summarises 6 key 
+architectural patterns that every should understand.
+
+1. Event-Driven architecture 
+2. Layered architecture 
+3. Monolithic architecture.
+4. Microservices architecture 
+5. Model-view controller
+6. Master-slave architecture.	
+
+# project pre-requisite steps:
+understand where is the all microservices code src folder is
+understand release folder and kubernetes-manifests.yaml.
+kubernetes-manifests.yaml is a single file for all micro services creation same as we learned in yaml class.
+https://github.com/GoogleCloudPlatform/microservices-demo/blob/main/release/istio-manifests.yaml
+
+# Q. how the microservices connect with each other ?
+ans:- there are labels and selctors , microservices integrate  because of lables and selectors.
+
+# Q. why monorepo came..?
+Monorepo helps simplify code sharing, dependency management, 
+and cross-project changes by maintaining related projects in a centralized repository.
+
+
+## Q: What is the difference between kubectl create and kubectl apply?
+
+kubectl create is an imperative command used to create Kubernetes resources. If the resource already exists, it throws an error.
+
+kubectl apply is a declarative command used to create or update Kubernetes resources based on configuration files. 
+It compares the desired configuration with the existing resource and applies the necessary changes.
+
+
  
