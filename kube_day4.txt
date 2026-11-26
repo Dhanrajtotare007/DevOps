@@ -80,4 +80,15 @@ steps
 10. copy the external ip of frontend and run it in your browser  
 
 
+# if you delete particular pod and there are min 3 replicas set, the deployment always maintain 3 pods and  the service will not affect
+but there is only one desired pod and it get crash or delete , in next 30 sec deployment creates new pod and replace it, so the 
+service only get affected for that 30sec, but except that service rest application will work properly, i.e. payment service and frontend.
+this is the reason the service rarly gets down.
+
+# if a deployment is delete for particular service , whole service will be down until we redeploy it.
+how to do that
+option 1:- we can redeploy affected service by finding its .yamal file 
+option 2 :- we can redeploy all services again (kubectl apply -f kubernetes-manifests.yaml),
+ kubernetes will not override it will just redeploy the missing service.
+
  

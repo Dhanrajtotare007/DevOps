@@ -1,0 +1,123 @@
+
+## what are logs and metrics
+1. What are Logs?
+Logs are records of events that happen inside an application or system.
+They tell us what happened, when it happened, and sometimes why it happened.
+For example, imagine you deployed a microservice application on Kubernetes.
+
+Your application might generate logs like:
+
+10:00:01 INFO  Application started successfully
+10:00:05 INFO  Database connection established
+10:00:10 ERROR Failed to connect to database
+10:00:15 WARN  Retrying database connection
+10:00:20 INFO  Database connection restored
+
+Why do we need logs?
+- To troubleshoot application errors.
+- To understand why an application crashed.
+- To identify failed database connections.
+- To investigate security issues.
+- To understand the sequence of events.
+Think of logs as the diary of your application.
+
+2. ## What are Metrics?
+Metrics are numerical measurements collected over time to understand the performance and health of a system.
+Unlike logs, metrics generally focus on numbers rather than individual events.
+
+Metric	Value
+CPU utilization	            75%
+Memory utilization	        80%
+HTTP requests per second	500
+Application response time	200 ms
+Failed requests	            25
+Running pods	            5
+
+Why do we need metrics?
+- Monitor CPU and memory utilization.
+- Monitor application performance.
+- Track incoming requests.
+- Identify performance bottlenecks.
+- Set alerts when resource usage becomes too high.
+- Understand application traffic trends.
+Think of metrics as the health report of your application.
+
+## Min and Max are configured by us, whereas Desired replicas are calculated dynamically by HPA 
+based on the observed metrics and target utilization.
+desired replicas = current replicas * [current metrict/target metrics]
+
+
+## HPA - horizantal pod autoscalling practical.....
+create a cluster
+Steps
+ 1.create new folder - mkdir folder name
+ 2.
+3. Create an Nginx Deployment with Resource Limits ,create a .yamal file - vi nginx-deployment.yaml 
+   paste 
+   ---
+   apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2  # Initial number of replicas
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+          requests:
+            cpu: "250m"
+          limits:
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+		
+		
+		
+4. apply deployment manifest
+kubectl apply -f nginx-deployment.yaml		
+5. Verify the deployment 
+kubectl get pod
+kubectl get deploy 
+kubectl describe deployment nginx-deployment
+
+6. Expose Nginx Service 
+ kubectl expose deployment nginx-deployment --type=LoadBalancer --port=80 --name=nginx-service
+ 
+7. Verify the service:
+ kubectl get svc 
+ 
+8.Enable Metrics Server (If Not Already Installed - GKE usually 
+comes with the Metrics Server pre-installed, but you can install it manually if needed:)
+
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+9. Verify the metrics server:
+kubectl get apiservices | grep metrics
+ 
+ NAME                REFERENCE                   TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
+nginx-deployment   Deployment/nginx-deployment  0%/50%     2         5         2          1m
+
+
+10. Simulate High CPU Load to Test Scaling 
+Deploy a Load Generator Pod (to stress the CPU and trigger HPA)
+kubectl run -it --rm --image=busybox load-generator -- /bin/sh
+
+11. Inside the container, run a loop to generate CPU load.
+while true; do wget -q -O- http://nginx-service; done
+
+		
+   
+ 
+
+
+
+
