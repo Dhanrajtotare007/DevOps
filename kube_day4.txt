@@ -1,0 +1,31 @@
+
+## diffn betn microservices and monolithic architecture...
+
+## microservices
+1. every unit of the entire application should be the smallest, 
+and it should be able to deliver one specific business gaol.
+2. servic startup is relatively quick
+3.fault isolation is easy. even if one service goes down
+other can continue to function. 
+4. all microservices are loosly coupled so that changes 
+made in one does not affect the other.
+5. bussiness can deploy more resources to servic that are 
+generating more ROI.
+6.more hardware resources could be allocated to the servic that is 
+frequently used.so, more resources could be allocated to 
+the search and product listning microservices.
+7. Microservices always remains consistent and continously 
+availabel.
+
+## Monolithic architecture
+1.a single code base for all business gaol
+2. service - startup take more time. 
+3. fault isolation is difficult. if any specific feature is not working,
+the complete system goes down. in order to handle this issue, application 
+need to rebuit retested and also redeployed.
+4. Monolithic architecture is tightly coupled. changes in one module of code 
+affect the other.
+5.Since services are not isolated, individual resource allocation not possible.
+6. application scalling is challenging as well as wastfull.
+7. Development tools get overburdened as the process needs to start from the scratch.
+ 
