@@ -19,4 +19,8 @@ dig
   ### pv, pvc and mount.
   
   ## what is product listning microservices ?
+  
+  ## kubernetes comman erros and solutions - in depth study & practical.
+  
+  
    

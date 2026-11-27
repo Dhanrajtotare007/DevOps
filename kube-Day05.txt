@@ -102,17 +102,79 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/late
 
 9. Verify the metrics server:
 kubectl get apiservices | grep metrics
- 
+
+10. Create HPA for Nginx Deployment
+ Run the following command to create an HPA that scales pods between 2 and 5 replicas based on CPU usage:
+ kubectl autoscale deployment nginx-deployment --cpu-percent=2 --min=2 --max=5
+ Verify the HPA configuration:
+kubectl get hpa
+eo 
  NAME                REFERENCE                   TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 nginx-deployment   Deployment/nginx-deployment  0%/50%     2         5         2          1m
 
 
-10. Simulate High CPU Load to Test Scaling 
+11. Simulate High CPU Load to Test Scaling 
 Deploy a Load Generator Pod (to stress the CPU and trigger HPA)
 kubectl run -it --rm --image=busybox load-generator -- /bin/sh
 
-11. Inside the container, run a loop to generate CPU load.
+12. Inside the container, run a loop to generate CPU load.
 while true; do wget -q -O- http://nginx-service; done
+
+13. Observe HPA scaling the pods: 
+kubectl get hpa
+kubectl get pods -w
+
+14. Cleanup (Optional)
+After testing, clean up your resources:
+
+kubectl delete hpa nginx-deployment
+kubectl delete deployment nginx-deployment
+kubectl delete svc nginx-service
+
+Final Output & Result
+Initially, there are 2 Nginx pods.
+When CPU usage exceeds 50%, HPA scales up the pods dynamically (up to 5).
+If CPU load reduces, HPA scales down the pods.
+This ensures efficient resource utilization and cost management.
+
+## kubernetes comman erros and solutions
+
+1. pods not starting 
+pc - insufficient resource, image errors
+solutions - check resource limit, ensure correct image name, tag.
+
+2. service not accessible 
+pc - Misconfigured service, Network policies 
+solutions - verify service configuration, check network policies.
+
+3. persistent volume claim issues
+pc - inssufficient storage, access mode mismatch issues
+solutions - ensure adequate storage, match pvc and pv access mode.
+
+4. configmap key not found
+pc - missing key in config map 
+solutions - add the missing key to the config map
+
+5. crashloopbackoffstatus
+pc - private image withouth creadentials , wrong image name
+solutions - provide image pull secrete, verify image name and tag.
+
+6. Node not ready 
+pc - Network issue, Disk pressure, invalid token/certificate, access.
+solutions - check node , network connectivity, token/certificate , free up disk space.
+
+7. failed scheduling 
+pc - taints and tolerations mismatch, insufficient storage.
+solutions - adjust taint and tolerations, ensure resource availability.
+
+8. RBAC authorization error 
+pc - incorrect role binding, missing permissions
+solutions - review and correct role bindings, 
+add neccesary permissions.
+
+9. ingress controller
+pc - misconfigured ingress, SSL/TLS problems.
+solutions - verify ingress configuration, check SSL/TLS Certificates.
 
 		
    
