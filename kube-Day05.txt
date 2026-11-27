@@ -195,6 +195,12 @@ solutions - verify ingress configuration, check SSL/TLS Certificates.
   kubecost - Cost Monitoring.
   Crossplane - Platform Engineering
   cillium - Network security.
+  kubeflow - ML Pipelines
+  MLflow - Experiment Tracking
+  kServe - Model Serving
+  Ollama - LLM inference
+  Envoy - Traffic management(l7)
+  Inference Gateway - LLM traffic routing.
 
 		
    
