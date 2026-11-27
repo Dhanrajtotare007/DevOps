@@ -201,6 +201,28 @@ solutions - verify ingress configuration, check SSL/TLS Certificates.
   Ollama - LLM inference
   Envoy - Traffic management(l7)
   Inference Gateway - LLM traffic routing.
+  
+  
+  ## what are kubernetes jobs..?
+  A Kubernetes Job is a Kubernetes workload resource used to 
+  execute a task or batch process until it completes successfully. 
+  It creates one or more Pods to perform the task and ensures that the required number of successful completions is achieved.
+
+Unlike a Deployment, which continuously maintains running Pods, a Job runs a finite task and terminates once the task is completed.
+  
+  use cases of jobs 
+Database backup.
+Sending bulk emails.
+Data processing.
+Generating reports.
+Database migrations.
+Running one-time scripts.
+
+
+## The default backoffLimit is 6 if not specified. Also, 
+failures can be counted differently depending on the restart policy and failure configuration.
+
+
 
 		
    
