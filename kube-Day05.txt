@@ -222,6 +222,50 @@ Running one-time scripts.
 ## The default backoffLimit is 6 if not specified. Also, 
 failures can be counted differently depending on the restart policy and failure configuration.
 
+## Kubernetes Secret Creation A Kubernetes Secret stores sensitive information such as:
+Database username and password
+API keys
+Application credentials
+Authentication tokens
+
+Method 1: Create Secret using kubectl command
+kubectl create secret generic db-secret
+--from-literal=username=admin
+--from-literal=password=MyDB@123
+
+Verify Secret -  
+kubectl get secrets
+kubectl describe secret db-secret
+
+Decode Secret Values Kubernetes stores Secret data in Base64 encoding by default. to decode it run command 
+kubectl get secret db-secret -o jsonpath='{.data.username}' | base64 --decode
+kubectl get secret db-secret -o jsonpath='{.data.password}' | base64 --decode
+
+Method 2: Create Secret using YAML Create a file named secret.yaml.
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+  namespace: default
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: TXlEQkAxMjM=
+  
+  kubectl apply -f secret.yaml
+
+Important security point Base64 is encoding, not encryption.
+Enable Kubernetes encryption at rest and apply proper RBAC restrictions to protect Secrets.
+
+
+
+
+
+
+
+
+
+
 
 
 		
