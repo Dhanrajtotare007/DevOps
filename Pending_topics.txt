@@ -22,5 +22,6 @@ dig
   
   ## kubernetes comman erros and solutions - in depth study & practical.
   
+  ## opa - security provides, security code for secutiry part, opa code, opa run as container.it is written in .yaml
   
    

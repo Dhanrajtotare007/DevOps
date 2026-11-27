@@ -108,7 +108,7 @@ kubectl get apiservices | grep metrics
  kubectl autoscale deployment nginx-deployment --cpu-percent=2 --min=2 --max=5
  Verify the HPA configuration:
 kubectl get hpa
-eo 
+expected outcome 
  NAME                REFERENCE                   TARGETS    MINPODS   MAXPODS   REPLICAS   AGE
 nginx-deployment   Deployment/nginx-deployment  0%/50%     2         5         2          1m
 
@@ -175,6 +175,26 @@ add neccesary permissions.
 9. ingress controller
 pc - misconfigured ingress, SSL/TLS problems.
 solutions - verify ingress configuration, check SSL/TLS Certificates.
+
+
+
+  ## kubernetes tool ecosystem.
+  
+  kubernetes + 
+  docker - Container orchestration
+  helm - package management
+  Terraform - infrastructure provisioning
+  ArgoCD - gitOps
+  Prometheus - Monitoring
+  Grafana - Visualization
+  Istio - Service Mesh
+  Nginx-Ingress - Traffic Routing
+  KEDA - Auto and event driven scalling.
+  Vault - Secrets Management.
+  OPA - Secrets as a code.
+  kubecost - Cost Monitoring.
+  Crossplane - Platform Engineering
+  cillium - Network security.
 
 		
    
